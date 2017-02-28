@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: MyString
+  owing_user_id: MyString
+  outstanding_user_id: MyString
+  amount: 1.5
+
+two:
+  event_id: MyString
+  owing_user_id: MyString
+  outstanding_user_id: MyString
+  amount: 1.5

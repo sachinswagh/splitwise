@@ -1,0 +1,37 @@
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header"> Users </h1>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width='10%'>Name</th>
+          <th class='text-right' width='20%'>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td width='10%'><%= user.name %></td>
+            <td class='text-right' width='20%'>
+              <%= link_to 'Show', user %>
+              <%= link_to 'Edit', edit_user_path(user) %>
+              <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class='pull-right'>
+  <%= link_to 'New User', new_user_path, class: "btn btn-primary", style: "color: white"  %>
+  <%= link_to 'Manage Events', events_path, class: "btn btn-primary", style: "color: white"  %>
+</div>
+

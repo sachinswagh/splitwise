@@ -1,0 +1,61 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+<div class='row'>
+  <div class='col-md-offset-3 col-md-6'>
+    <h1 class="page-header">User <%= @user.name %> </h1>
+    <div class="panel">
+      <div class="panel-body">
+        <% if(@user.owing_splits.count > 0) %>
+        <p>
+          <%= @user.name %> Owe
+          <% @user.owing_splits.each do |os| %>
+           <%= os.amount %> for <%= os.event.name %> to <%= os.outstanding_user.name %>
+          <% end %>
+        </p>
+        <% end %>
+        <% if(@user.outstanding_splits.count > 0) %>
+          <p>
+            <%= @user.name %> gets back
+            <% @user.outstanding_splits.each do |os| %>
+            <%= os.amount %> for <%= os.event.name %> from <%= os.owing_user.name %>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-body">
+        <p>
+          <% if(@user.user_wise_splits.count > 0) %>
+            <% @user.user_wise_splits.each do |user_id, vals| %>
+              <% if( vals['amount'] > 0 ) %>
+                <%= @user.name %> owes <%= vals['amount'] %> to <%= vals['name'] %>.
+              <% else %>
+                <%= @user.name %> gets back <%= vals['amount'].abs %> from <%= vals['name'] %>.
+              <% end %>
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-body">
+        <h4>
+          <% if( @user.splits_total > 0 ) %>
+            <%= @user.name %> owes <%= @user.splits_total %> to others.
+          <% else %>
+            <%= @user.name %> gets back <%= @user.splits_total.abs %> from others.
+          <% end %>
+        </h4>
+      </div>
+    </div>
+
+
+    <div class="pull-right">
+      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary" %>
+      <%= link_to 'Back', @users_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+
+

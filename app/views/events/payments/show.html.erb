@@ -1,0 +1,19 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+<p>
+  <strong>Event:</strong>
+  <%= @payment.event.name rescue '' %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @payment.user.name rescue '' %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @payment.amount %>
+</p>
+
+<%= link_to 'Edit', edit_event_payment_path(@event, @payment) %> |
+<%= link_to 'Back', event_payments_path(@event) %>
